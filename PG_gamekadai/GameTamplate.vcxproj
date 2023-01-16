@@ -19,12 +19,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="program_file\GameClear.h" />
+    <ClInclude Include="program_file\CONTROLER.h" />
+    <ClInclude Include="program_file\GameEnd.h" />
+    <ClInclude Include="program_file\AbstractScene.h" />
+    <ClInclude Include="program_file\FPS_CONTROLER.h" />
+    <ClInclude Include="program_file\COLOR.h" />
+    <ClInclude Include="program_file\MAIN.h" />
+    <ClInclude Include="program_file\Game_Main.h" />
     <ClInclude Include="hedder_file\GameMain.h" />
     <ClInclude Include="hedder_file\TITLE.h" />
+    <ClInclude Include="program_file\SceneManager.h" />
+    <ClInclude Include="program_file\title.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="program_file\GameClear.cpp" />
+    <ClCompile Include="program_file\CONTROLER.cpp" />
+    <ClCompile Include="program_file\GameEnd.cpp" />
+    <ClCompile Include="program_file\SceneManager.cpp" />
+    <ClCompile Include="program_file\FPS_CONTROLER.cpp" />
+    <ClCompile Include="program_file\COLOR.cpp" />
     <ClCompile Include="cppfile\TITLE.cpp" />
     <ClCompile Include="cppfile\GameMain.cpp" />
+    <ClCompile Include="program_file\MAIN.cpp" />
+    <ClCompile Include="program_file\Game_Main.cpp" />
+    <ClCompile Include="program_file\title.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
