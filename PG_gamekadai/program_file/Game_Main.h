@@ -14,7 +14,7 @@ private:
 public:
 	//コンストラクタ
 	GameMain();
-	~GameMain();
+	~GameMain() {};
 
 
 	//ここにGame_Mainで使う関数を
