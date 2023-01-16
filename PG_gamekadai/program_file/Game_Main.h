@@ -1,9 +1,15 @@
 #pragma once
 #include"AbstractScene.h"
+#include"COLOR.h"
 class GameMain:public AbstractScene
 {
 private:
 	//ここにGame_Mainで使う変数を
+
+	int time;
+
+	COLOR* color;
+
 
 public:
 	//コンストラクタ
