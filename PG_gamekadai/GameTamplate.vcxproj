@@ -18,6 +18,14 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="hedder_file\GameMain.h" />
+    <ClInclude Include="hedder_file\TITLE.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cppfile\TITLE.cpp" />
+    <ClCompile Include="cppfile\GameMain.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{8EB35DFB-AD96-4F64-91DC-B7A3BCE4F9F5}</ProjectGuid>
