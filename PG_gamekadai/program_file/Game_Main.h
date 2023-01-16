@@ -1,6 +1,7 @@
 #pragma once
 #include"AbstractScene.h"
 #include"COLOR.h"
+#include"SELECT.h"
 
 
 
@@ -12,11 +13,13 @@ private:
 	int time;
 	int cursol_x, cursol_y;
 	COLOR* color;
+	DIFFICULTY select;
 
 
 public:
 	//コンストラクタ
 	GameMain();
+	GameMain(DIFFICULTY);
 	~GameMain() {};
 
 

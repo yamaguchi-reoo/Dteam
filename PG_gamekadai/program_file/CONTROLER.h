@@ -33,13 +33,6 @@ public:
             OldKey[i] = NowKey[i];
             NowKey[i] = Input.Buttons[i];
         }
-        //右スティック
-        Rstick.ThumbX = Input.ThumbRX;
-        Rstick.ThumbX = Input.ThumbRY;
-
-        //左スティック
-        Lstick.ThumbX = Input.ThumbLX;
-        Lstick.ThumbX = Input.ThumbLY;
     }
 
     //ボタンを押された瞬間
@@ -63,15 +56,4 @@ public:
         return ret;
     }
 
-    //右スティックの取得
-    static Stick GetRStick()
-    {
-        return Rstick;
-    }
-
-    //左スティックの取得
-    static Stick GetLStick()
-    {
-        return Lstick;
-    }
 };

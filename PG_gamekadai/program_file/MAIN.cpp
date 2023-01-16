@@ -2,6 +2,7 @@
 #include"Game_Main.h"
 #include <DxLib.h>
 #include <stdio.h>
+#include"SELECT.h"
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -12,7 +13,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetWindowIconID(01);
 
 	ChangeWindowMode(TRUE);		// ウィンドウモードで起動
-	SetGraphMode(1280, 720, 32);
+	SetGraphMode(1280, 720, 32);  //画面サイズを設定
 	if (DxLib_Init() == -1) return -1;	// DXライブラリの初期化処理
 
 	SetAlwaysRunFlag(true);		//常にアクティブにする
@@ -26,7 +27,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SceneManager* sceneMng;
 	try
 	{
-		sceneMng = new SceneManager((AbstractScene*)new GameMain());
+		sceneMng = new SceneManager((AbstractScene*)new SELECT());
 
 	}
 	catch (const char* err)

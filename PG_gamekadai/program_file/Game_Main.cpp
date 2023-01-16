@@ -5,15 +5,37 @@
 GameMain::GameMain()
 {
 	color = nullptr;
+	cursol_x = 0;
+	cursol_y = 0;
+	time = 0;
+}
+
+GameMain::GameMain(DIFFICULTY difficulty)
+{
+	select = difficulty;
+	color = nullptr;
+	cursol_x = 0;
+	cursol_y = 0;
 	time = 0;
 }
 
 AbstractScene* GameMain::Update()
 {
+
 	return this;
 }
 
 void GameMain::Draw() const
 {
-	DrawString(0, 0, "MTHOR", 0xffff00);
+	switch (select)
+	{
+	case DIFFICULTY::EAZY:
+		break;
+	case DIFFICULTY::NORMAL:
+		break;
+	case DIFFICULTY::HARD:
+		break;
+	default:
+		break;
+	}
 }
