@@ -1,13 +1,16 @@
 #pragma once
 #include"AbstractScene.h"
 #include"COLOR.h"
+
+
+
 class GameMain:public AbstractScene
 {
 private:
 	//‚±‚±‚ÉGame_Main‚Åg‚¤•Ï”‚ğ
 
 	int time;
-
+	int cursol_x, cursol_y;
 	COLOR* color;
 
 
