@@ -1,8 +1,8 @@
 #include "MAIN.h"
-#include"Game_Main.h"
 #include <DxLib.h>
 #include <stdio.h>
 #include"SELECT.h"
+#include"GameClear.h"
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -27,7 +27,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SceneManager* sceneMng;
 	try
 	{
-		sceneMng = new SceneManager((AbstractScene*)new SELECT());
+		sceneMng = new SceneManager((AbstractScene*)new GameClear());
 
 	}
 	catch (const char* err)

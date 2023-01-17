@@ -5,6 +5,7 @@ class GameClear:public AbstractScene
 {
 private:
 	//ここにゲームクリアで使う変数を
+	int GameClearImg;
 public:
 	//ここにゲームクリアで使う関数を
 
@@ -12,7 +13,7 @@ public:
 	//この中で上で宣言した変数を初期化する
 	GameClear();
 	//この中で作ったものを消す
-	~GameClear();
+	~GameClear() {};
 
 
 	//ここでGameClearで使う変数の値の更新をする

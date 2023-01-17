@@ -3,27 +3,23 @@
 #include"COLOR.h"
 #include"SELECT.h"
 
+#define NORMAL_SIZE 4
 
 
-class GameMain:public AbstractScene
+class NORMAL_DIF :public AbstractScene
 {
 private:
 	//ここにGame_Mainで使う変数を
 
-	int time;
+	int block_image[4];
 	int cursol_x, cursol_y;
-	int eazy_stage[4][4];
 	int normal_stage[6][6];
-	int hard_stage[8][8];
-	COLOR* color;
-	DIFFICULTY select;
 
 
 public:
 	//コンストラクタ
-	GameMain();
-	GameMain(DIFFICULTY);
-	~GameMain() {};
+	NORMAL_DIF();
+	~NORMAL_DIF() {};
 
 
 	//ここにGame_Mainで使う関数を
