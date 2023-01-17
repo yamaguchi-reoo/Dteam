@@ -15,6 +15,14 @@ EAZY_DIF::EAZY_DIF()
 	{
 		throw "Images/Color.png";
 	}
+	if ((frame_image = LoadGraph("images/FrameImage.png")) == -1)
+	{
+		throw "images/FrameImage.png";
+	}
+	if ((cursol_image = LoadGraph("iamges/CursorImage.png")) == -1)
+	{
+		throw "images/CursorImage.png";
+	}
 
 
 	srand((unsigned)time(NULL));
@@ -49,6 +57,7 @@ void EAZY_DIF::Standby()
 
 void EAZY_DIF::Draw() const
 {
+	DrawBox(0, 0, 1280, 720, 0xffffff, TRUE);
 	if (stand)
 	{
 		SetFontSize(10);
@@ -73,16 +82,17 @@ void EAZY_DIF::Draw() const
 				switch (eazy_stage[i][j])
 				{
 				case 0:
-					DrawGraph(300 + (50 * j), 200 + (50 * i), block_image[0], TRUE);
+					DrawGraph((300 + j) + (50 * j), (200 + i) + (50 * i), block_image[0], TRUE);
+					DrawGraph((300 + j) + (50 * j), (200 + i) + (50 * i), cursol_image, TRUE);
 					break;
 				case 1:
-					DrawGraph(300 + (50 * j), 200 + (50 * i), block_image[1], TRUE);
+					DrawGraph((300 + j) + (50 * j), (200 + i) + (50 * i), block_image[1], TRUE);
 					break;
 				case 2:
-					DrawGraph(300 + (50 * j), 200 + (50 * i), block_image[2], TRUE);
+					DrawGraph((300 + j) + (50 * j), (200 + i) + (50 * i), block_image[2], TRUE);
 					break;
 				case 3:
-					DrawGraph(300 + (50 * j), 200 + (50 * i), block_image[3], TRUE);
+					DrawGraph((300 + j) + (50 * j), (200 + i) + (50 * i), block_image[3], TRUE);
 					break;
 				default:
 					break;
@@ -90,4 +100,5 @@ void EAZY_DIF::Draw() const
 			}
 		}
 	}
+	DrawGraph(300, 200, frame_image,TRUE);
 }

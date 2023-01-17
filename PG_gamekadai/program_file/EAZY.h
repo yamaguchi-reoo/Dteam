@@ -13,6 +13,8 @@ private:
 	int block_image[4];
 	int cursol_x, cursol_y;
 	int eazy_stage[4][4];
+	int frame_image;
+	int cursol_image;
 	int stand_count;
 	bool stand;
 
