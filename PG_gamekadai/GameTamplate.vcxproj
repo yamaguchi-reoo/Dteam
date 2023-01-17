@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="program_file\GAME_OVER.h" />
     <ClInclude Include="program_file\EAZY.h" />
     <ClInclude Include="program_file\HARD.h" />
     <ClInclude Include="hedder_file\GameMain.h" />
@@ -35,6 +36,7 @@
     <ClInclude Include="program_file\SELECT.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="program_file\GAME_OVER.cpp" />
     <ClCompile Include="program_file\EAZY.cpp" />
     <ClCompile Include="program_file\HARD.cpp" />
     <ClCompile Include="program_file\NORMAL.cpp" />

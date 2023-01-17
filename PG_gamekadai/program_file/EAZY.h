@@ -17,10 +17,14 @@ private:
 	int cursol_x, cursol_y;
 	int eazy_stage[EAZY_SIZE][EAZY_SIZE];
 	int player_stage[EAZY_SIZE][EAZY_SIZE];
+	bool answer_stage[EAZY_SIZE][EAZY_SIZE];
 	int frame_image;
 	int cursol_image;
 	int cursol_count_x ,cursol_count_y;
 	int stand_count;
+	int game_count;
+	int time_limit;
+	int point;
 	bool stand;
 	bool pose;
 
