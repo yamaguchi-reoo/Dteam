@@ -37,6 +37,14 @@ EAZY_DIF::EAZY_DIF()
 			eazy_stage[i][j] = rand() % 4;
 		}
 	}
+
+	for (int i = 0; i < EAZY_SIZE; i++)
+	{
+		for (int j = 0; j < EAZY_SIZE; j++)
+		{
+			player_stage[i][j] = 0;
+		}
+	}
 }
 
 AbstractScene* EAZY_DIF::Update()
@@ -97,6 +105,23 @@ AbstractScene* EAZY_DIF::Update()
 		WaitTimer(120);
 	}
 
+
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
+	{
+		player_stage[cursol_count_y][cursol_count_y] = 1;
+	}
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B))
+	{
+		player_stage[cursol_count_y][cursol_count_x] = 0;
+	}
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_Y))
+	{
+		player_stage[cursol_count_y][cursol_count_x] = 3;
+	}
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_X))
+	{
+		player_stage[cursol_count_y][cursol_count_x] = 2;
+	}
 	return this;
 }
 
@@ -120,7 +145,23 @@ void EAZY_DIF::Draw() const
 		{
 			for (int j = 0; j < EAZY_SIZE; j++)
 			{
-				DrawFormatString(10 * i, 10 * j, 0x00ff00, "%d", eazy_stage[i][j]);
+				switch (player_stage[i][j])
+				{
+				case 0:
+					DrawGraph((300 + j) + (50 * j), (200 + i) + (50 * i), block_image[0], TRUE);
+					break;
+				case 1:
+					DrawGraph((300 + j) + (50 * j), (200 + i) + (50 * i), block_image[1], TRUE);
+					break;
+				case 2:
+					DrawGraph((300 + j) + (50 * j), (200 + i) + (50 * i), block_image[2], TRUE);
+					break;
+				case 3:
+					DrawGraph((300 + j) + (50 * j), (200 + i) + (50 * i), block_image[3], TRUE);
+					break;
+				default:
+					break;
+				}
 			}
 		}
 
@@ -157,7 +198,5 @@ void EAZY_DIF::Draw() const
 			}
 		}
 	}
-
 	DrawGraph(300, 200, frame_image,TRUE);
-
 }

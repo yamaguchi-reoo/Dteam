@@ -7,6 +7,7 @@
 #define CURSOL_Y 200
 
 
+
 class EAZY_DIF :public AbstractScene
 {
 private:
@@ -14,7 +15,8 @@ private:
 
 	int block_image[4];
 	int cursol_x, cursol_y;
-	int eazy_stage[4][4];
+	int eazy_stage[EAZY_SIZE][EAZY_SIZE];
+	int player_stage[EAZY_SIZE][EAZY_SIZE];
 	int frame_image;
 	int cursol_image;
 	int cursol_count_x ,cursol_count_y;
