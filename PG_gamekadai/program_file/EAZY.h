@@ -22,6 +22,7 @@ private:
 	int cursol_count_x ,cursol_count_y;
 	int stand_count;
 	bool stand;
+	bool pose;
 
 public:
 	//コンストラクタ
@@ -35,5 +36,6 @@ public:
 	void Draw() const override;
 
 	void Standby();
+	bool ClearJudge();
 };
 
