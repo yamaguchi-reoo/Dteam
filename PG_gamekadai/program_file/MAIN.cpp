@@ -1,5 +1,4 @@
 #include "MAIN.h"
-#include"Game_Main.h"
 #include <DxLib.h>
 #include <stdio.h>
 #include"SELECT.h"

@@ -2,7 +2,9 @@
 #include "DxLib.h"
 #include <stdio.h>
 #include"CONTROLER.h"
-#include"Game_Main.h"
+#include"HARD.h"
+#include"EAZY.h"
+#include"NORMAL.h"
 
 SELECT::SELECT()
 {
@@ -59,7 +61,20 @@ AbstractScene* SELECT::Update()
 
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B))
 	{
-		return new GameMain(difficul);
+		switch (difficul)
+		{
+		case DIFFICULTY::EAZY:
+			return new EAZY_DIF();
+			break;
+		case DIFFICULTY::NORMAL:
+			return new NORMAL_DIF();
+			break;
+		case DIFFICULTY::HARD:
+			return new HARD_DIF();
+			break;
+		default:
+			break;
+		}
 	}
 
 	return this;
