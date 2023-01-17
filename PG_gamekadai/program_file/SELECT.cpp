@@ -11,7 +11,7 @@ SELECT::SELECT()
 	cursol_x = 490;
 	cursol_y = CURSOL_SIZE_Y;
 	difficul = DIFFICULTY::EAZY;
-
+	selectimage = LoadGraph("images/select.png");
 }
 
 
@@ -83,11 +83,11 @@ AbstractScene* SELECT::Update()
 void SELECT::Draw() const
 {
 	SetFontSize(60);
-	DrawFormatString(LETT_X, LETT_Y, 0xff00ff, "EAZY");
-	DrawFormatString(LETT_X - 60, LETT_Y + LETT_SPACE, 0xff00ff, "NORMAL");
-	DrawFormatString(LETT_X, LETT_Y + (LETT_SPACE * 2), 0xff00ff, "HARD");
-
-	DrawBox(cursol_x, cursol_y, cursol_x + 220, cursol_y + 80, 0x00ff00, FALSE);
+	/*DrawFormatString(LETT_X - 30 , LETT_Y, 0x0000ff, "EAZY");
+	DrawFormatString(LETT_X - 60, LETT_Y + LETT_SPACE, 0x008000, "NORMAL");
+	DrawFormatString(LETT_X - 30, LETT_Y + (LETT_SPACE * 2), 0xff0000, "HARD");*/
+	DrawGraph(0, 0, selectimage, FALSE);
+	DrawBox(cursol_x, cursol_y, cursol_x + 290, cursol_y + 80, 0x000000, FALSE);
 }
 
  

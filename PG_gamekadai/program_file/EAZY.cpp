@@ -54,7 +54,6 @@ AbstractScene* EAZY_DIF::Update()
 	{
 		Standby();
 	}
-
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_START))
 	{
 		ClearJudge();
@@ -72,7 +71,7 @@ AbstractScene* EAZY_DIF::Update()
 		}
 		WaitTimer(120);
 	}
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP) || PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_UP))
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP) /*|| PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_UP)*/)
 	{
 		if (cursol_count_y > 0)
 		{
@@ -85,7 +84,7 @@ AbstractScene* EAZY_DIF::Update()
 		WaitTimer(120);
 	}
 
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_RIGHT) || PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT))
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_RIGHT) /*|| PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT)*/)
 	{
 		if (cursol_count_x < EAZY_SIZE - 1)
 		{
@@ -98,7 +97,7 @@ AbstractScene* EAZY_DIF::Update()
 		WaitTimer(120);
 	}
 
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_LEFT) || PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT))
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_LEFT) /*|| PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT)*/)
 	{
 		if (cursol_count_x > 0)
 		{
@@ -158,6 +157,8 @@ void EAZY_DIF::Draw() const
 	DrawBox(0, 0, 1280, 720, 0xffffff, TRUE);
 	if (stand)
 	{
+
+
 		SetFontSize(10);
 		for (int i = 0; i < EAZY_SIZE; i++)
 		{
@@ -203,6 +204,7 @@ void EAZY_DIF::Draw() const
 					break;
 				case 1:
 					DrawGraph((300 + j) + (50 * j), (200 + i) + (50 * i), block_image[1], TRUE);
+					
 					break;
 				case 2:
 					DrawGraph((300 + j) + (50 * j), (200 + i) + (50 * i), block_image[2], TRUE);
