@@ -2,14 +2,17 @@
 #include "DxLib.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "CONTROLER.h"
 #include <time.h>
 
 EAZY_DIF::EAZY_DIF()
 {
-	cursol_x = 0;
-	cursol_y = 0;
+	cursol_x = CURSOL_X;
+	cursol_y = CURSOL_Y;
 	stand_count = 0;
-	stand = false;
+	cursol_count_x = 0;
+	cursol_count_y = 0;
+	stand = true;
 
 	if ((LoadDivGraph("images/Color.png", 4, 4, 1, 50, 50, block_image)) == -1)
 	{
@@ -19,7 +22,7 @@ EAZY_DIF::EAZY_DIF()
 	{
 		throw "images/FrameImage.png";
 	}
-	if ((cursol_image = LoadGraph("iamges/CursorImage.png")) == -1)
+	if ((cursol_image = LoadGraph("images/CursorImage.png")) == -1)
 	{
 		throw "images/CursorImage.png";
 	}
@@ -42,6 +45,58 @@ AbstractScene* EAZY_DIF::Update()
 	{
 		Standby();
 	}
+
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN) || PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_DOWN))
+	{
+		if (cursol_count_y < EAZY_SIZE - 1)
+		{
+			++cursol_count_y;
+		}
+		else
+		{
+			cursol_count_y = 0;
+		}
+		WaitTimer(120);
+	}
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP) || PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_UP))
+	{
+		if (cursol_count_y > 0)
+		{
+			--cursol_count_y;
+		}
+		else
+		{
+			cursol_count_y = EAZY_SIZE - 1;
+		}
+		WaitTimer(120);
+	}
+
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_RIGHT) || PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT))
+	{
+		if (cursol_count_x < EAZY_SIZE - 1)
+		{
+			++cursol_count_x;
+		}
+		else
+		{
+			cursol_count_x = 0;
+		}
+		WaitTimer(120);
+	}
+
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_LEFT) || PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT))
+	{
+		if (cursol_count_x > 0)
+		{
+			--cursol_count_x;
+		}
+		else
+		{
+			cursol_count_x = EAZY_SIZE - 1;
+		}
+		WaitTimer(120);
+	}
+
 	return this;
 }
 
@@ -68,6 +123,8 @@ void EAZY_DIF::Draw() const
 				DrawFormatString(10 * i, 10 * j, 0x00ff00, "%d", eazy_stage[i][j]);
 			}
 		}
+
+		DrawGraph(300 + (101 * cursol_count_x), 200 + (101 * cursol_count_y), cursol_image, TRUE);
 	}
 	else
 	{
@@ -100,5 +157,7 @@ void EAZY_DIF::Draw() const
 			}
 		}
 	}
+
 	DrawGraph(300, 200, frame_image,TRUE);
+
 }

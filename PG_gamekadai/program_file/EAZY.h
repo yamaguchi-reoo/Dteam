@@ -3,6 +3,8 @@
 #include"SELECT.h"
 
 #define EAZY_SIZE 2
+#define CURSOL_X 300
+#define CURSOL_Y 200
 
 
 class EAZY_DIF :public AbstractScene
@@ -15,6 +17,7 @@ private:
 	int eazy_stage[4][4];
 	int frame_image;
 	int cursol_image;
+	int cursol_count_x ,cursol_count_y;
 	int stand_count;
 	bool stand;
 
