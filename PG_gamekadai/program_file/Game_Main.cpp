@@ -8,6 +8,11 @@ GameMain::GameMain()
 	cursol_x = 0;
 	cursol_y = 0;
 	time = 0;
+
+	for (int i = 0; i < 4; i++)
+	{
+
+	}
 }
 
 GameMain::GameMain(DIFFICULTY difficulty)
