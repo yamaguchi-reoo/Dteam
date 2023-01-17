@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ゲームクリア画面.cpp">
+    <ClCompile Include="GameClear_Over.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
