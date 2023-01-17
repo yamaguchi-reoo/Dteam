@@ -12,7 +12,7 @@ public:
 	//この中で上で宣言した変数を初期化する
 	GameClear();
 	//この中で作ったものを消す
-	~GameClear();
+	~GameClear() {};
 
 
 	//ここでGameClearで使う変数の値の更新をする
