@@ -5,7 +5,7 @@
 #include"HARD.h"
 #include"EAZY.h"
 #include"NORMAL.h"
-
+#include "title.h"
 SELECT::SELECT()
 {
 	cursol_x = 490;
@@ -17,6 +17,9 @@ SELECT::SELECT()
 
 AbstractScene* SELECT::Update()
 {
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A)) {
+		return new TITLE(); //title‚Ö
+	}
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN))
 	{
 		switch (difficul)
