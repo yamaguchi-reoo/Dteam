@@ -1,4 +1,5 @@
 #include "MAIN.h"
+#include"GameEnd.h"
 #include <DxLib.h>
 #include <stdio.h>
 #include"SELECT.h"
@@ -31,7 +32,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SceneManager* sceneMng;
 	try
 	{
-		sceneMng = new SceneManager((AbstractScene*)new TITLE());
+		sceneMng = new SceneManager((AbstractScene*)new GameEnd());
 
 	}
 	catch (const char* err)
