@@ -2,6 +2,7 @@
 #include"DxLib.h"
 #include"SELECT.h"
 #include<stdio.h>
+#include"title.h"
 
 GameClear::GameClear()
 { 
@@ -20,7 +21,7 @@ AbstractScene* GameClear::Update()
 {
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B))
 	{
-		return new SELECT();
+		return new TITLE();
 	}
 	return this;
 }

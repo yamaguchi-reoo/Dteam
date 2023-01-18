@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include"SELECT.h"
 #include"GameClear.h"
+#include"EAZY.h"
+#include"HARD.h"
+#include"NORMAL.h"
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -27,7 +30,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SceneManager* sceneMng;
 	try
 	{
-		sceneMng = new SceneManager((AbstractScene*)new GameClear());
+		sceneMng = new SceneManager((AbstractScene*)new TITLE());
 
 	}
 	catch (const char* err)

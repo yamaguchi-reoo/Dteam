@@ -9,7 +9,7 @@ NORMAL_DIF::NORMAL_DIF()
 	cursol_x = 0;
 	cursol_y = 0;
 
-	if ((LoadDivGraph("images/Color.png", 4, 4, 1, 50, 50, block_image)) == -1)
+	if ((LoadDivGraph("images/Color.png", 4, 4, 1, 100, 100, block_image)) == -1)
 	{
 		throw "Images/Color.png";
 	}
