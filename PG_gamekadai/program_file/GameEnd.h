@@ -4,7 +4,7 @@ class GameEnd : AbstractScene
 {
 private:
 	//‚±‚±‚ÉGAMEƒGƒ“ƒh‚Åg‚¤•Ï”‚ğ
-	int endy =0 ;
+	int endy = 0;
 	int endtime = 0;
 
 	int EndImg;

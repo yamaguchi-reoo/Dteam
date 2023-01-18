@@ -42,5 +42,4 @@ void GameEnd::Draw() const
 	DrawString(450, 495 + endy, "@SE@@@@@‚w‚w‚w‚w‚w‚w‚w‚w", 0xFFFFFF);
 	DrawString(450, 600 + endy, "Thank you for playing!!", 0xFFFFFF);
 
-
 }
