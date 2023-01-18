@@ -5,7 +5,7 @@ class GameClear:public AbstractScene
 {
 private:
 	//ここにゲームクリアで使う変数を
-	int GameClearImg;
+	int gameclearimg;		// 画像用変数
 public:
 	//ここにゲームクリアで使う関数を
 
