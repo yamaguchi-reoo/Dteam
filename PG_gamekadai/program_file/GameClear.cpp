@@ -5,7 +5,7 @@
 #include"title.h"
 
 GameClear::GameClear()
-{
+{ 
 	GameClearImg = LoadGraph("images/gameclear.png",FALSE);
 }
 

@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include"SELECT.h"
 #include"GameClear.h"
+#include"EAZY.h"
+#include"HARD.h"
+#include"NORMAL.h"
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
