@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include"AbstractScene.h"
 class GameEnd : AbstractScene
 {
@@ -16,5 +16,5 @@ public:
 	AbstractScene* Update() override;
 	//‚±‚±‚Å•`‰æ‚ğ‚·‚×‚Ä‘‚­
 	void Draw() const override;
-};
+};*/
 
