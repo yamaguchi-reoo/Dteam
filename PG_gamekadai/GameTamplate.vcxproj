@@ -34,6 +34,7 @@
     <ClInclude Include="program_file\SceneManager.h" />
     <ClInclude Include="program_file\title.h" />
     <ClInclude Include="program_file\SELECT.h" />
+    <ClInclude Include="program_file\RESULT.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="program_file\GAME_OVER.cpp" />
@@ -48,6 +49,7 @@
     <ClCompile Include="program_file\SceneManager.cpp" />
     <ClCompile Include="program_file\title.cpp" />
     <ClCompile Include="program_file\SELECT.cpp" />
+    <ClCompile Include="program_file\RESULT.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

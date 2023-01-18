@@ -6,24 +6,28 @@
 #include <time.h>
 #include"GAME_OVER.h"
 #include"GameClear.h"
+#include"RESULT.h"
+#include <math.h>
 
 EAZY_DIF::EAZY_DIF()
 {
 	cursol_x = CURSOL_X;
 	cursol_y = CURSOL_Y;
-	stand_count = 0;
+	standby_count = 0;
 	cursol_count_x = 0;
 	cursol_count_y = 0;
 	game_count = 0;
 	time_limit = 60;
+	standby_limit = 5;
 	stand = false;
 	pose = false;
+	point = 0;
 
 	if ((LoadDivGraph("images/Color.png", 5, 5, 1, IMAGE_SIZE, IMAGE_SIZE, block_image)) == -1)
 	{
-		throw "Images/Color.png";
+		throw "Images/block_image.png";
 	}
-	if ((frame_image = LoadGraph("images/FrameImage.png")) == -1)
+	if ((frame_image = LoadGraph("images/FrameImage1.png")) == -1)
 	{
 		throw "images/FrameImage.png";
 	}
@@ -55,101 +59,121 @@ EAZY_DIF::EAZY_DIF()
 
 AbstractScene* EAZY_DIF::Update()
 {
-	
-
-	if (!stand)
+	if (!pose)
 	{
-		Standby();
-	}
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_START))
-	{
-		if (ClearJudge())
+		if (!stand)
 		{
-			return new GameClear();
+			Standby();
+			if (standby_count++ % 60 == 0)
+			{
+				standby_limit--;
+			}
+		}
+		else
+		{
+			if (PAD_INPUT::OnButton(XINPUT_BUTTON_START))
+			{
+				pose = true;
+			}
+			else
+			{
+				game_count++;
+			}
+
+			if (game_count % 60 == 0)
+			{
+				time_limit--;
+				if (time_limit <= 0)
+				{
+					return new GAME_OVER();
+				}
+			}
+
+
+			if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN) || PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_DOWN))
+			{
+				if (cursol_count_y < EAZY_SIZE - 1)
+				{
+					++cursol_count_y;
+				}
+				else
+				{
+					cursol_count_y = 0;
+				}
+				WaitTimer(120);
+			}
+			if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP) /*|| PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_UP)*/)
+			{
+				if (cursol_count_y > 0)
+				{
+					--cursol_count_y;
+				}
+				else
+				{
+					cursol_count_y = EAZY_SIZE - 1;
+				}
+				WaitTimer(120);
+			}
+
+			if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_RIGHT) /*|| PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT)*/)
+			{
+				if (cursol_count_x < EAZY_SIZE - 1)
+				{
+					++cursol_count_x;
+				}
+				else
+				{
+					cursol_count_x = 0;
+				}
+				WaitTimer(120);
+			}
+
+			if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_LEFT) /*|| PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT)*/)
+			{
+				if (cursol_count_x > 0)
+				{
+					--cursol_count_x;
+				}
+				else
+				{
+					cursol_count_x = EAZY_SIZE - 1;
+				}
+				WaitTimer(120);
+			}
+
+
+			if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
+			{
+				player_stage[cursol_count_y][cursol_count_x] = 2;
+			}
+			if (PAD_INPUT::OnButton(XINPUT_BUTTON_B))
+			{
+				player_stage[cursol_count_y][cursol_count_x] = 1;
+			}
+			if (PAD_INPUT::OnButton(XINPUT_BUTTON_Y))
+			{
+				player_stage[cursol_count_y][cursol_count_x] = 4;
+			}
+			if (PAD_INPUT::OnButton(XINPUT_BUTTON_X))
+			{
+				player_stage[cursol_count_y][cursol_count_x] = 3;
+			}
 		}
 	}
 	else
 	{
-		game_count++;
-	}
-
-	if (game_count % 60 == 0)
-	{
-		time_limit--;
-		if (time_limit <= 0)
+		if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
 		{
-			return new GAME_OVER();
+			if (ClearJudge())
+			{
+				return new RESULT(this);
+			}
 		}
-	}
-
-
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN) || PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_DOWN))
-	{
-		if (cursol_count_y < EAZY_SIZE - 1)
+		else if (PAD_INPUT::OnButton(XINPUT_BUTTON_B))
 		{
-			++cursol_count_y;
+			pose = false;
 		}
-		else
-		{
-			cursol_count_y = 0;
-		}
-		WaitTimer(120);
-	}
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP) /*|| PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_UP)*/)
-	{
-		if (cursol_count_y > 0)
-		{
-			--cursol_count_y;
-		}
-		else
-		{
-			cursol_count_y = EAZY_SIZE - 1;
-		}
-		WaitTimer(120);
-	}
-
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_RIGHT) /*|| PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT)*/)
-	{
-		if (cursol_count_x < EAZY_SIZE - 1)
-		{
-			++cursol_count_x;
-		}
-		else
-		{
-			cursol_count_x = 0;
-		}
-		WaitTimer(120);
-	}
-
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_LEFT) /*|| PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT)*/)
-	{
-		if (cursol_count_x > 0)
-		{
-			--cursol_count_x;
-		}
-		else
-		{
-			cursol_count_x = EAZY_SIZE - 1;
-		}
-		WaitTimer(120);
-	}
-
-
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
-	{
-		player_stage[cursol_count_y][cursol_count_x] = 2;
-	}
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B))
-	{
-		player_stage[cursol_count_y][cursol_count_x] = 1;
-	}
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_Y))
-	{
-		player_stage[cursol_count_y][cursol_count_x] = 4;
-	}
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_X))
-	{
-		player_stage[cursol_count_y][cursol_count_x] = 3;
+		else;
 	}
 	return this;
 }
@@ -158,7 +182,7 @@ AbstractScene* EAZY_DIF::Update()
 void EAZY_DIF::Standby()
 {
 
-	if (stand_count++ > 300)
+	if (standby_limit <= 0)
 	{
 		stand = true;
 	}
@@ -175,7 +199,7 @@ bool EAZY_DIF::ClearJudge()
 			if (player_stage[i][j] == eazy_stage[i][j])
 			{
 				answer_stage[i][j] = true;
-				point += 25;
+				point += 100 / (EAZY_SIZE * EAZY_SIZE);
 			}
 		}
 	}
@@ -190,72 +214,84 @@ bool EAZY_DIF::ClearJudge()
 
 void EAZY_DIF::Draw() const
 {
-	DrawBox(0, 0, 1280, 720, 0xffffff, TRUE);
-	if (stand)
+	if (!pose)
 	{
-		SetFontSize(10);
-		for (int i = 0; i < EAZY_SIZE; i++)
+		DrawBox(0, 0, 1280, 720, 0xffffff, TRUE);
+		if (stand)
 		{
-			for (int j = 0; j < EAZY_SIZE; j++)
+			SetFontSize(10);
+			for (int i = 0; i < EAZY_SIZE; i++)
 			{
-				switch (player_stage[i][j])
+				for (int j = 0; j < EAZY_SIZE; j++)
 				{
-				case 0:
-					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[0], TRUE);
-					break;
-				case 1:
-					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[1], TRUE);
-					break;
-				case 2:
-					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[2], TRUE);
-					break;
-				case 3:
-					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[3], TRUE);
-					break;
-				case 4:
-					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[4], TRUE);
-					break;
-				default:
-					break;
+					switch (player_stage[i][j])
+					{
+					case 0:
+						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[0], TRUE);
+						break;
+					case 1:
+						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[1], TRUE);
+						break;
+					case 2:
+						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[2], TRUE);
+						break;
+					case 3:
+						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[3], TRUE);
+						break;
+					case 4:
+						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[4], TRUE);
+						break;
+					default:
+						break;
+					}
 				}
 			}
+			DrawGraph(300, 200, frame_image, TRUE);
+			SetFontSize(20);
+			DrawFormatString(0, 0, 0xffff00, "%3d", time_limit);
+			DrawGraph(300 + (101 * cursol_count_x), 200 + (101 * cursol_count_y), cursol_image, TRUE);
 		}
+		else
+		{
 
-		DrawGraph(300 + (101 * cursol_count_x), 200 + (101 * cursol_count_y), cursol_image, TRUE);
+			SetFontSize(20);
+			DrawString(400, 600, "覚えろ", 0xff00ff);
+
+			for (int i = 0; i < EAZY_SIZE; i++)
+			{
+				for (int j = 0; j < EAZY_SIZE; j++)
+				{
+					switch (eazy_stage[i][j])
+					{
+					case 0:
+						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[0], TRUE);
+						break;
+					case 1:
+						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[1], TRUE);
+						break;
+					case 2:
+						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[2], TRUE);
+						break;
+					case 3:
+						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[3], TRUE);
+						break;
+					case 4:
+						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[4], TRUE);
+						break;
+					default:
+						break;
+					}
+				}
+			}
+			DrawGraph(300, 200, frame_image, TRUE);
+			SetFontSize(20);
+			DrawFormatString(0, 0, 0xffff00, "%3d", standby_limit);
+		}
 	}
 	else
 	{
-
-		SetFontSize(20);
-		DrawString(400, 600, "覚えろ", 0xff00ff);
-
-		for (int i = 0; i < EAZY_SIZE; i++)
-		{
-			for (int j = 0; j < EAZY_SIZE; j++)
-			{
-				switch (eazy_stage[i][j])
-				{
-				case 0:
-					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[0], TRUE);
-					break;
-				case 1:
-					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[1], TRUE);
-					break;
-				case 2:
-					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[2], TRUE);
-					break;
-				case 3:
-					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[3], TRUE);
-					break;
-				case 4:
-					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[4], TRUE);
-					break;
-				default:
-					break;
-				}
-			}
-		}
+		SetFontSize(30);
+		DrawFormatString(0, 0, 0xffff00, "Final Answer？");
+		DrawFormatString(0, 40, 0x00ff00, "Aで採点画面　　　Bでゲーム画面に戻る");
 	}
-	DrawGraph(300, 200, frame_image,TRUE);
-	DrawFormatString(0, 0, 0xffff00, "%3d",time_limit);
 }
