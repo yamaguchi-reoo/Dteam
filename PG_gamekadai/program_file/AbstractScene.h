@@ -1,5 +1,6 @@
 #pragma once
 
+#define IMAGE_SIZE 100
 
 class AbstractScene
 {

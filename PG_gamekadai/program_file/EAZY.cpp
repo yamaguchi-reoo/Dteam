@@ -16,10 +16,10 @@ EAZY_DIF::EAZY_DIF()
 	cursol_count_y = 0;
 	game_count = 0;
 	time_limit = 60;
-	stand = true;
+	stand = false;
 	pose = false;
 
-	if ((LoadDivGraph("images/Color.png", 4, 4, 1, 100, 100, block_image)) == -1)
+	if ((LoadDivGraph("images/Color.png", 5, 5, 1, IMAGE_SIZE, IMAGE_SIZE, block_image)) == -1)
 	{
 		throw "Images/Color.png";
 	}
@@ -39,7 +39,7 @@ EAZY_DIF::EAZY_DIF()
 	{
 		for (int j = 0; j < EAZY_SIZE; j++)
 		{
-			eazy_stage[i][j] = rand() % 4;
+			eazy_stage[i][j] = rand() % 4 + 1;
 		}
 	}
 
@@ -137,19 +137,19 @@ AbstractScene* EAZY_DIF::Update()
 
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
 	{
-		player_stage[cursol_count_y][cursol_count_x] = 1;
+		player_stage[cursol_count_y][cursol_count_x] = 2;
 	}
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B))
 	{
-		player_stage[cursol_count_y][cursol_count_x] = 0;
+		player_stage[cursol_count_y][cursol_count_x] = 1;
 	}
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_Y))
 	{
-		player_stage[cursol_count_y][cursol_count_x] = 3;
+		player_stage[cursol_count_y][cursol_count_x] = 4;
 	}
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_X))
 	{
-		player_stage[cursol_count_y][cursol_count_x] = 2;
+		player_stage[cursol_count_y][cursol_count_x] = 3;
 	}
 	return this;
 }
@@ -193,8 +193,6 @@ void EAZY_DIF::Draw() const
 	DrawBox(0, 0, 1280, 720, 0xffffff, TRUE);
 	if (stand)
 	{
-
-
 		SetFontSize(10);
 		for (int i = 0; i < EAZY_SIZE; i++)
 		{
@@ -203,16 +201,19 @@ void EAZY_DIF::Draw() const
 				switch (player_stage[i][j])
 				{
 				case 0:
-					DrawGraph((300 + j) + (100 * j), (200 + i) + (100 * i), block_image[0], TRUE);
+					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[0], TRUE);
 					break;
 				case 1:
-					DrawGraph((300 + j) + (100 * j), (200 + i) + (100 * i), block_image[1], TRUE);
+					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[1], TRUE);
 					break;
 				case 2:
-					DrawGraph((300 + j) + (100 * j), (200 + i) + (100 * i), block_image[2], TRUE);
+					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[2], TRUE);
 					break;
 				case 3:
-					DrawGraph((300 + j) + (100 * j), (200 + i) + (100 * i), block_image[3], TRUE);
+					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[3], TRUE);
+					break;
+				case 4:
+					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[4], TRUE);
 					break;
 				default:
 					break;
@@ -235,18 +236,19 @@ void EAZY_DIF::Draw() const
 				switch (eazy_stage[i][j])
 				{
 				case 0:
-					DrawGraph((300 + j) + (50 * j), (200 + i) + (50 * i), block_image[0], TRUE);
-					DrawGraph((300 + j) + (50 * j), (200 + i) + (50 * i), cursol_image, TRUE);
+					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[0], TRUE);
 					break;
 				case 1:
-					DrawGraph((300 + j) + (50 * j), (200 + i) + (50 * i), block_image[1], TRUE);
-					
+					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[1], TRUE);
 					break;
 				case 2:
-					DrawGraph((300 + j) + (50 * j), (200 + i) + (50 * i), block_image[2], TRUE);
+					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[2], TRUE);
 					break;
 				case 3:
-					DrawGraph((300 + j) + (50 * j), (200 + i) + (50 * i), block_image[3], TRUE);
+					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[3], TRUE);
+					break;
+				case 4:
+					DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[4], TRUE);
 					break;
 				default:
 					break;
