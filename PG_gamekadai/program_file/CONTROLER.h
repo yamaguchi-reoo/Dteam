@@ -56,4 +56,13 @@ public:
         return ret;
     }
 
+    bool Comp_Key(int button) 
+    {
+        if (OldKey[button] = NowKey[button])
+        {
+            return true;
+        }
+        return false;
+    };
+
 };

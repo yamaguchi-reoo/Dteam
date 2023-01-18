@@ -19,25 +19,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="program_file\GAME_OVER.h" />
+    <ClInclude Include="program_file\EAZY.h" />
+    <ClInclude Include="program_file\HARD.h" />
     <ClInclude Include="hedder_file\GameMain.h" />
     <ClInclude Include="hedder_file\TITLE.h" />
+    <ClInclude Include="program_file\NORMAL.h" />
     <ClInclude Include="program_file\AbstractScene.h" />
     <ClInclude Include="program_file\COLOR.h" />
     <ClInclude Include="program_file\CONTROLER.h" />
     <ClInclude Include="program_file\GameClear.h" />
     <ClInclude Include="program_file\GameEnd.h" />
-    <ClInclude Include="program_file\Game_Main.h" />
     <ClInclude Include="program_file\MAIN.h" />
     <ClInclude Include="program_file\SceneManager.h" />
     <ClInclude Include="program_file\title.h" />
     <ClInclude Include="program_file\SELECT.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="program_file\GAME_OVER.cpp" />
+    <ClCompile Include="program_file\EAZY.cpp" />
+    <ClCompile Include="program_file\HARD.cpp" />
+    <ClCompile Include="program_file\NORMAL.cpp" />
     <ClCompile Include="program_file\COLOR.cpp" />
     <ClCompile Include="program_file\CONTROLER.cpp" />
     <ClCompile Include="program_file\GameClear.cpp" />
     <ClCompile Include="program_file\GameEnd.cpp" />
-    <ClCompile Include="program_file\Game_Main.cpp" />
     <ClCompile Include="program_file\MAIN.cpp" />
     <ClCompile Include="program_file\SceneManager.cpp" />
     <ClCompile Include="program_file\title.cpp" />
@@ -120,7 +126,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\dxlib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\dxlib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -135,7 +141,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\dxlib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\dxlib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -154,7 +160,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\dxlib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\dxlib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -173,7 +179,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\dxlib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\dxlib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

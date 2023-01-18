@@ -1,8 +1,23 @@
 #pragma once
 #include"AbstractScene.h"
+
+
+
+
+
+
+
+
 class TITLE:public AbstractScene
 {private:
 	//ここにタイトルで使う変数を
+	int titleimage;//タイトル変数
+	int titlearrow;//タイトルカーソル
+	int cursor_x, cursor_y;
+	int cursorstate;
+	int cursorend;
+	int cursor_no;
+	
 public:
 	//ここにタイトルで使う関数を
 
