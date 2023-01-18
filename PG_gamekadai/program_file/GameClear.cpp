@@ -15,7 +15,7 @@ void GameClear::Draw() const
 	DrawGraph(0, 0, gameclearimg, TRUE);
 	
 	SetFontSize(16);
-	DrawString(500, 650, " ---- Bボタンでメニュー画面へ ----", 0x000000, 0x000000);
+	DrawString(500, 650, " ---- Bボタンでメニュー画面へ ----", 0xffffff);
 }
 
 AbstractScene* GameClear::Update()
