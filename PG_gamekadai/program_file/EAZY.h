@@ -2,7 +2,7 @@
 #include"AbstractScene.h"
 #include"SELECT.h"
 
-#define EAZY_SIZE 2
+#define EAZY_SIZE 3
 #define CURSOL_X 300
 #define CURSOL_Y 200
 
@@ -21,12 +21,14 @@ private:
 	int frame_image;
 	int cursol_image;
 	int cursol_count_x ,cursol_count_y;
-	int stand_count;
+	int standby_count;
 	int game_count;
 	int time_limit;
+	int standby_limit;
 	int point;
 	bool stand;
 	bool pose;
+	EAZY_DIF* eazy;
 
 public:
 	//コンストラクタ
@@ -41,5 +43,15 @@ public:
 
 	void Standby();
 	bool ClearJudge();
+
+	int Get_E_Stage(int i, int j)
+	{
+		return eazy_stage[i][j];
+	}
+	int Get_P_Stage(int i, int j)
+	{
+		return player_stage[i][j];
+	}
+	int Get_Point() { return point; }
 };
 

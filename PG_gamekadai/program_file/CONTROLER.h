@@ -55,14 +55,4 @@ public:
         bool ret = (NowKey[button] == 1 && OldKey[button] == 0);
         return ret;
     }
-
-    bool Comp_Key(int button) 
-    {
-        if (OldKey[button] = NowKey[button])
-        {
-            return true;
-        }
-        return false;
-    };
-
 };

@@ -60,15 +60,15 @@
     <ClInclude Include="program_file\GAME_OVER.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="program_file\RESULT.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="program_file\COLOR.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="program_file\CONTROLER.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="program_file\GameClear.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="program_file\GameEnd.cpp">
@@ -98,5 +98,11 @@
     <ClCompile Include="program_file\GAME_OVER.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-  </ItemGroup>
+     <ClCompile Include="program_file\GameClear.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+      <ClCompile Include="program_file\RESULT.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    </ItemGroup>
 </Project>

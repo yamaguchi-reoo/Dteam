@@ -3,18 +3,19 @@
 #include"SELECT.h"
 #include<stdio.h>
 #include"title.h"
+#include"CONTROLER.h"
 
 GameClear::GameClear()
 { 
-	GameClearImg = LoadGraph("images/gameclear.png",FALSE);
+	gameclearimg = LoadGraph("images/gameclear.png",FALSE);
 }
 
 void GameClear::Draw() const
 {
-	DrawGraph(0, 0, GameClearImg, TRUE);
+	DrawGraph(0, 0, gameclearimg, TRUE);
 	
 	SetFontSize(16);
-	DrawString(500, 650, " ---- Bボタンでメニュー画面へ ----", 0x000000, 0x000000);
+	DrawString(500, 650, " ---- Bボタンでメニュー画面へ ----", 0xffffff);
 }
 
 AbstractScene* GameClear::Update()
