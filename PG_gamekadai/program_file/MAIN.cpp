@@ -32,7 +32,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SceneManager* sceneMng;
 	try
 	{
-		sceneMng = new SceneManager((AbstractScene*)new GameEnd());
+		sceneMng = new SceneManager((AbstractScene*)new TITLE());
 
 	}
 	catch (const char* err)
