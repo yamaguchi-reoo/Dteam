@@ -8,6 +8,7 @@
 #include"EAZY.h"
 #include"HARD.h"
 #include"NORMAL.h"
+#include"Help.h"
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -32,7 +33,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SceneManager* sceneMng;
 	try
 	{
-		sceneMng = new SceneManager((AbstractScene*)new TITLE());
+		sceneMng = new SceneManager((AbstractScene*)new GameEnd());
 
 	}
 	catch (const char* err)

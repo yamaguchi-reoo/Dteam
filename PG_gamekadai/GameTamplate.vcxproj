@@ -24,6 +24,7 @@
     <ClInclude Include="program_file\HARD.h" />
     <ClInclude Include="hedder_file\GameMain.h" />
     <ClInclude Include="hedder_file\TITLE.h" />
+    <ClInclude Include="program_file\Help.h" />
     <ClInclude Include="program_file\NORMAL.h" />
     <ClInclude Include="program_file\AbstractScene.h" />
     <ClInclude Include="program_file\COLOR.h" />
@@ -40,6 +41,7 @@
     <ClCompile Include="program_file\GAME_OVER.cpp" />
     <ClCompile Include="program_file\EAZY.cpp" />
     <ClCompile Include="program_file\HARD.cpp" />
+    <ClCompile Include="program_file\Help.cpp" />
     <ClCompile Include="program_file\NORMAL.cpp" />
     <ClCompile Include="program_file\COLOR.cpp" />
     <ClCompile Include="program_file\CONTROLER.cpp" />

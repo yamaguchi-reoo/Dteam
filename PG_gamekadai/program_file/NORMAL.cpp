@@ -40,6 +40,7 @@ NORMAL_DIF::NORMAL_DIF()
 
 	if ((mozi_image = LoadGraph("images/mozi.png")) == -1);
 	if((kakunin_image=LoadGraph("images/kakunin.png"))==-1);
+	if ((timeer_image = LoadGraph("images/timeimage.png")) == -1);
 
 	srand((unsigned)time(NULL));
 
@@ -275,8 +276,9 @@ void NORMAL_DIF::Draw() const
 			}
 			DrawGraph(Nflame_x, Nflame_y, frame_image, TRUE);
 			DrawGraph(Nflame_x + (101 * cursol_count_x), Nflame_y + (101 * cursol_count_y), cursol_image, TRUE);
-			SetFontSize(20);
-			DrawFormatString(0, 0, 0xffff00, "%3d", time_limit);
+			SetFontSize(50);
+			DrawFormatString(740, 55, 0x000000, "%3d", time_limit);
+			DrawGraph(490, 50, timeer_image, TRUE);
 		}
 		//Šo‚¦‚éŽžŠÔ
 		else

@@ -23,7 +23,7 @@ HARD_DIF::HARD_DIF()
 	Hflame_x = 425;
 	Hflame_y = 150;
 
-	if ((LoadDivGraph("images/Color.png", 5, 5, 1, IMAGE_SIZE, IMAGE_SIZE, block_image)) == -1)
+	if ((LoadDivGraph("images/Color1.png", 4, 4, 1, IMAGE_SIZE, IMAGE_SIZE, block_image)) == -1)
 	{
 		throw "Images/Color.png";
 	}
@@ -46,7 +46,7 @@ HARD_DIF::HARD_DIF()
 	{
 		for (int j = 0; j < HARD_SIZE; j++)
 		{
-			hard_stage[i][j] = rand() % 4 + 1;
+			hard_stage[i][j] = rand() % 3 + 1;
 		}
 	}
 

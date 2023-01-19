@@ -16,7 +16,7 @@ TITLE::TITLE()
 
 AbstractScene* TITLE::Update()
 {
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN)) 
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN))
 	{
 		if (cursor_no < 1)++cursor_no;
 		else --cursor_no;
@@ -36,10 +36,9 @@ AbstractScene* TITLE::Update()
 			return new SELECT();
 		}
 		if(cursor_no == 1) {
-			return nullptr;
+		   return new GameEnd();
 		}
 	}
-
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A)) {
 		return nullptr;
 	}
