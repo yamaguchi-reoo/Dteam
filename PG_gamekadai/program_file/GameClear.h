@@ -5,7 +5,11 @@ class GameClear:public AbstractScene
 {
 private:
 	//ここにゲームクリアで使う変数を
-	int gameclearimg;		// 画像用変数
+
+	int gameclearimg;	// 画像用変数
+	int count;	// カウント
+	int blink;	// 点滅用変数
+
 public:
 	//ここにゲームクリアで使う関数を
 
