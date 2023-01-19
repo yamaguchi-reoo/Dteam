@@ -13,9 +13,7 @@ class TITLE:public AbstractScene
 	//ここにタイトルで使う変数を
 	int titleimage;//タイトル変数
 	int titlearrow;//タイトルカーソル
-	int cursor_x, cursor_y;
-	int cursorstate;
-	int cursorend;
+	int cursor_x;
 	int cursor_no;
 	
 public:

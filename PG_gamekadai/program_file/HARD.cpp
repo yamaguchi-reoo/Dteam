@@ -22,6 +22,9 @@ HARD_DIF::HARD_DIF()
 	pose = false;
 	point = 0;
 
+	Hflame_x = 425;
+	Hflame_y = 150;
+
 	if ((LoadDivGraph("images/Color.png", 5, 5, 1, IMAGE_SIZE, IMAGE_SIZE, block_image)) == -1)
 	{
 		throw "Images/Color.png";
@@ -34,6 +37,9 @@ HARD_DIF::HARD_DIF()
 	{
 		throw "images/CursorImage.png";
 	}
+
+	if ((mozi_image = LoadGraph("images/mozi.png")) == -1);
+	if ((kakunin_image = LoadGraph("images/kakunin.png")) == -1);
 
 
 	srand((unsigned)time(NULL));
@@ -90,7 +96,7 @@ AbstractScene* HARD_DIF::Update()
 			}
 
 
-			if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN) || PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_DOWN))
+			if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN) /*|| PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_DOWN)*/)
 			{
 				if (cursol_count_y < HARD_SIZE - 1)
 				{
@@ -227,35 +233,34 @@ void HARD_DIF::Draw() const
 					switch (player_stage[i][j])
 					{
 					case 0:
-						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[0], TRUE);
+						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[0], TRUE);
 						break;
 					case 1:
-						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[1], TRUE);
+						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[1], TRUE);
 						break;
 					case 2:
-						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[2], TRUE);
+						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[2], TRUE);
 						break;
 					case 3:
-						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[3], TRUE);
+						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[3], TRUE);
 						break;
 					case 4:
-						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[4], TRUE);
+						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[4], TRUE);
 						break;
 					default:
 						break;
 					}
 				}
 			}
-			DrawGraph(300, 200, frame_image, TRUE);
+			DrawGraph(Hflame_x, Hflame_y, frame_image, TRUE);
 			SetFontSize(20);
 			DrawFormatString(0, 0, 0xffff00, "%3d", time_limit);
-			DrawGraph(300 + (101 * cursol_count_x), 200 + (101 * cursol_count_y), cursol_image, TRUE);
+			DrawGraph(Hflame_x + (101 * cursol_count_x), Hflame_y + (101 * cursol_count_y), cursol_image, TRUE);
 		}
 		else
 		{
 
-			SetFontSize(20);
-			DrawString(400, 600, "覚えろ", 0xff00ff);
+			DrawGraph(425, 10, mozi_image, TRUE);
 
 			for (int i = 0; i < HARD_SIZE; i++)
 			{
@@ -264,34 +269,32 @@ void HARD_DIF::Draw() const
 					switch (hard_stage[i][j])
 					{
 					case 0:
-						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[0], TRUE);
+						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[0], TRUE);
 						break;
 					case 1:
-						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[1], TRUE);
+						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[1], TRUE);
 						break;
 					case 2:
-						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[2], TRUE);
+						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[2], TRUE);
 						break;
 					case 3:
-						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[3], TRUE);
+						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[3], TRUE);
 						break;
 					case 4:
-						DrawGraph((300 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), block_image[4], TRUE);
+						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[4], TRUE);
 						break;
 					default:
 						break;
 					}
 				}
 			}
-			DrawGraph(300, 200, frame_image, TRUE);
+			DrawGraph(Hflame_x, Hflame_y, frame_image, TRUE);
 			SetFontSize(20);
 			DrawFormatString(0, 0, 0xffff00, "%3d", standby_limit);
 		}
 	}
 	else
 	{
-		SetFontSize(30);
-		DrawFormatString(0, 0, 0xffff00, "Final Answer？");
-		DrawFormatString(0, 40, 0x00ff00, "Aで採点画面　　　Bでゲーム画面に戻る");
+		DrawGraph(0, 0, kakunin_image, TRUE);//確認画面の表示
 	}
 }

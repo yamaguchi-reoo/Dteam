@@ -30,6 +30,13 @@ private:
 	bool pose;
 	EAZY_DIF* eazy;
 
+	int Eflame_x;
+	int Eflame_y;
+
+	int mozi_image;
+	int kakunin_image;
+	int timeer_image;
+
 public:
 	//コンストラクタ
 	EAZY_DIF();

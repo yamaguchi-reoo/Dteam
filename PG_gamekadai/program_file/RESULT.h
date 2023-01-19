@@ -21,8 +21,9 @@ private:
 	int frame_image[3];
 
 
-
-
+	int zibun_image;
+	int kotae_image;
+	int botan_image;
 public:
 	RESULT();
 	RESULT(EAZY_DIF*);

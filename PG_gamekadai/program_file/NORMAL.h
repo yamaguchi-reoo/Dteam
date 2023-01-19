@@ -29,6 +29,12 @@ private:
 	bool stand;
 	bool pose;
 
+	int Nflame_x;
+	int Nflame_y;
+
+	int mozi_image;
+	int kakunin_image;
+
 public:
 	//コンストラクタ
 	NORMAL_DIF();
