@@ -34,6 +34,7 @@ private:
 
 	int mozi_image;
 	int kakunin_image;
+	int timeer_image;
 
 public:
 	//コンストラクタ

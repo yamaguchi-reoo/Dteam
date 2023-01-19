@@ -36,10 +36,9 @@ AbstractScene* TITLE::Update()
 			return new SELECT();
 		}
 		if(cursor_no == 1) {
-			return nullptr;
+		   return new GameEnd();
 		}
 	}
-
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A)) {
 		return nullptr;
 	}

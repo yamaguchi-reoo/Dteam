@@ -1,8 +1,5 @@
 #include "GameEnd.h"
 #include "DxLib.h"
-#include <stdio.h>
-#include<stdlib.h>
-
 
 GameEnd::GameEnd()
 {

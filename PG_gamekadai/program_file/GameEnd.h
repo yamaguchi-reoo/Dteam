@@ -1,6 +1,6 @@
 #pragma once
 #include"AbstractScene.h"
-class GameEnd : AbstractScene
+class GameEnd : public AbstractScene
 {
 private:
 	//ここにGAMEエンドで使う変数を
@@ -19,8 +19,6 @@ public:
 	~GameEnd(){};
 
 	//ここでGameEndで使う変数の値を更新する
-
-
 	AbstractScene* Update() override;
 	//ここで描画をすべて書く
 	void Draw() const override;
