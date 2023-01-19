@@ -7,7 +7,7 @@
 
 TITLE::TITLE()
 {
-	titleimage = LoadGraph("images/title1.png", FALSE);
+	titleimage = LoadGraph("images/title.png", FALSE);
 	titlearrow = LoadGraph("images/yazirusi.png", FALSE);
 	cursor_x = 400;
     cursor_no = 0;	
