@@ -28,6 +28,12 @@ private:
 	bool stand;									//記憶時間かどうか
 	bool pose;									//画面を止めているかどうか
 
+	int Hflame_x = 450;
+	int Hflame_y = 200;
+
+	int mozi_image;
+	int kakunin_image;
+
 public:
 	//コンストラクタ
 	HARD_DIF();

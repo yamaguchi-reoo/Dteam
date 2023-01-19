@@ -21,8 +21,9 @@ private:
 	int frame_image[3];							//各難易度の罫線
 
 
-
-
+	int zibun_image;
+	int kotae_image;
+	int botan_image;
 public:
 	//各難易度のコンストラクタ
 	RESULT();

@@ -28,6 +28,12 @@ private:
 	bool stand;                                     //スタンバイが終了したかどうかの変数
 	bool pose;                                      //ゲームを止めているかどうかの変数
 
+	int Nflame_x;
+	int Nflame_y;
+
+	int mozi_image;
+	int kakunin_image;
+
 public:
 	//コンストラクタ
 	NORMAL_DIF();

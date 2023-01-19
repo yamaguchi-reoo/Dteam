@@ -51,6 +51,8 @@ RESULT::RESULT()
 
 	point = 0;
 
+
+	
 }
 
 RESULT::RESULT(EAZY_DIF* eazy_dif)
@@ -97,6 +99,10 @@ RESULT::RESULT(EAZY_DIF* eazy_dif)
 		throw "images/FrameImage.png";
 	}
 
+	
+	if((zibun_image = LoadGraph("images/zibun.png", FALSE))==-1);//”äŠr‚µ‚½‚Æ‚«‚ÌŽ©•ª‚ð•\Ž¦‚·‚é
+	if ((kotae_image = LoadGraph("images/kotae.png", FALSE)) == -1);
+	if ((botan_image = LoadGraph("images/botanositene1.png", FALSE)) == -1);
 }
 
 RESULT::RESULT(NORMAL_DIF* normal_dif)
@@ -143,6 +149,10 @@ RESULT::RESULT(NORMAL_DIF* normal_dif)
 		throw "images/FrameImage.png";
 	}
 
+	if ((zibun_image = LoadGraph("images/zibun.png", FALSE)) == -1);//”äŠr‚µ‚½‚Æ‚«‚ÌŽ©•ª‚ð•\Ž¦‚·‚é
+	if ((kotae_image = LoadGraph("images/kotae.png", FALSE)) == -1);
+	if ((botan_image = LoadGraph("images/botanositene1.png", FALSE)) == -1);
+
 }
 
 RESULT::RESULT(HARD_DIF* hard_dif)
@@ -188,6 +198,10 @@ RESULT::RESULT(HARD_DIF* hard_dif)
 	{
 		throw "images/FrameImage.png";
 	}
+	if ((zibun_image = LoadGraph("images/zibun.png", FALSE)) == -1);//”äŠr‚µ‚½‚Æ‚«‚ÌŽ©•ª‚ð•\Ž¦‚·‚é
+	if ((kotae_image = LoadGraph("images/kotae.png", FALSE)) == -1);
+	if ((botan_image = LoadGraph("images/botanositene1.png", FALSE)) == -1);
+
 }
 
 
@@ -216,8 +230,11 @@ void RESULT::Draw() const
 	//“ïˆÕ“x‚²‚Æ‚É•`‰æ‚·‚é‚à‚Ì‚ð•Ï‚¦‚é
 	if (easy != nullptr)
 	{
-		DrawGraph(70, 120, frame_image[0], TRUE);
-		DrawGraph(710, 110, frame_image[0], TRUE);
+		DrawGraph(200, 100, zibun_image, TRUE);
+		DrawGraph(875, 100, kotae_image, TRUE);
+		DrawGraph(75, 600, botan_image, TRUE);
+		DrawGraph(150, 200, frame_image[0], TRUE);
+		DrawGraph(820, 200, frame_image[0], TRUE);
 
 		for (int i = 0; i < EAZY_SIZE; i++)
 		{
@@ -226,19 +243,19 @@ void RESULT::Draw() const
 				switch (e_p_stage[i][j])
 				{
 				case 0:
-					DrawGraph((70 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[0], TRUE);
+					DrawGraph((150 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[0], TRUE);
 					break;
 				case 1:
-					DrawGraph((70 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[1], TRUE);
+					DrawGraph((150 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[1], TRUE);
 					break;
 				case 2:
-					DrawGraph((70 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[2], TRUE);
+					DrawGraph((150 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[2], TRUE);
 					break;
 				case 3:
-					DrawGraph((70 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[3], TRUE);
+					DrawGraph((150 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[3], TRUE);
 					break;
 				case 4:
-					DrawGraph((70 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[4], TRUE);
+					DrawGraph((150 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[4], TRUE);
 					break;
 				default:
 					break;
@@ -248,19 +265,19 @@ void RESULT::Draw() const
 				switch (e_stage[i][j])
 				{
 				case 0:
-					DrawGraph((710 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[0], TRUE);
+					DrawGraph((820 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[0], TRUE);
 					break;
 				case 1:
-					DrawGraph((710 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[1], TRUE);
+					DrawGraph((820 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[1], TRUE);
 					break;
 				case 2:
-					DrawGraph((710 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[2], TRUE);
+					DrawGraph((820 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[2], TRUE);
 					break;
 				case 3:
-					DrawGraph((710 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[3], TRUE);
+					DrawGraph((820 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[3], TRUE);
 					break;
 				case 4:
-					DrawGraph((710 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[4], TRUE);
+					DrawGraph((820 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[4], TRUE);
 					break;
 				default:
 					break;
@@ -270,8 +287,12 @@ void RESULT::Draw() const
 	}
 	else if (normal != nullptr)
 	{
-		DrawGraph(70, 120, frame_image[1], TRUE);
-		DrawGraph(710, 120, frame_image[1], TRUE);
+
+		DrawGraph(210, 100, zibun_image, TRUE);
+		DrawGraph(875, 100, kotae_image, TRUE);
+		DrawGraph(75, 600, botan_image, TRUE);
+		DrawGraph(120, 200, frame_image[1], TRUE);
+		DrawGraph(750, 200, frame_image[1], TRUE);
 
 
 		for (int i = 0; i < NORMAL_SIZE; i++)
@@ -281,19 +302,19 @@ void RESULT::Draw() const
 				switch (n_p_stage[i][j])
 				{
 				case 0:
-					DrawGraph((70 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[0], TRUE);
+					DrawGraph((120 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[0], TRUE);
 					break;
 				case 1:
-					DrawGraph((70 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[1], TRUE);
+					DrawGraph((120 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[1], TRUE);
 					break;
 				case 2:
-					DrawGraph((70 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[2], TRUE);
+					DrawGraph((120 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[2], TRUE);
 					break;
 				case 3:
-					DrawGraph((70 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[3], TRUE);
+					DrawGraph((120 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[3], TRUE);
 					break;
 				case 4:
-					DrawGraph((70 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[4], TRUE);
+					DrawGraph((150 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[4], TRUE);
 					break;
 				default:
 					break;
@@ -303,19 +324,19 @@ void RESULT::Draw() const
 				switch (n_stage[i][j])
 				{
 				case 0:
-					DrawGraph((710 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[0], TRUE);
+					DrawGraph((750 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[0], TRUE);
 					break;
 				case 1:
-					DrawGraph((710 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[1], TRUE);
+					DrawGraph((750 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[1], TRUE);
 					break;
 				case 2:
-					DrawGraph((710 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[2], TRUE);
+					DrawGraph((750 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[2], TRUE);
 					break;
 				case 3:
-					DrawGraph((710 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[3], TRUE);
+					DrawGraph((750 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[3], TRUE);
 					break;
 				case 4:
-					DrawGraph((710 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[4], TRUE);
+					DrawGraph((750 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[4], TRUE);
 					break;
 				default:
 					break;
@@ -325,8 +346,12 @@ void RESULT::Draw() const
 	}
 	else
 	{
-		DrawGraph(70, 120, frame_image[2], TRUE);
-		DrawGraph(710, 120, frame_image[2], TRUE);
+
+		DrawGraph(210, 10, zibun_image, TRUE);
+		DrawGraph(875, 10, kotae_image, TRUE);
+		DrawGraph(75, 600, botan_image, TRUE);
+		DrawGraph(70, 100, frame_image[2], TRUE);
+		DrawGraph(710, 100, frame_image[2], TRUE);
 
 
 		for (int i = 0; i < HARD_SIZE; i++)
@@ -336,19 +361,19 @@ void RESULT::Draw() const
 				switch (h_p_stage[i][j])
 				{
 				case 0:
-					DrawGraph((70 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[0], TRUE);
+					DrawGraph((70 + j) + (IMAGE_SIZE * j), (100 + i) + (IMAGE_SIZE * i), image[0], TRUE);
 					break;
 				case 1:
-					DrawGraph((70 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[1], TRUE);
+					DrawGraph((70 + j) + (IMAGE_SIZE * j), (100 + i) + (IMAGE_SIZE * i), image[1], TRUE);
 					break;
 				case 2:
-					DrawGraph((70 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[2], TRUE);
+					DrawGraph((70 + j) + (IMAGE_SIZE * j), (100 + i) + (IMAGE_SIZE * i), image[2], TRUE);
 					break;
 				case 3:
-					DrawGraph((70 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[3], TRUE);
+					DrawGraph((70 + j) + (IMAGE_SIZE * j), (100 + i) + (IMAGE_SIZE * i), image[3], TRUE);
 					break;
 				case 4:
-					DrawGraph((70 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[4], TRUE);
+					DrawGraph((70 + j) + (IMAGE_SIZE * j), (100 + i) + (IMAGE_SIZE * i), image[4], TRUE);
 					break;
 				default:
 					break;
@@ -358,19 +383,19 @@ void RESULT::Draw() const
 				switch (h_stage[i][j])
 				{
 				case 0:
-					DrawGraph((710 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[0], TRUE);
+					DrawGraph((710 + j) + (IMAGE_SIZE * j), (100 + i) + (IMAGE_SIZE * i), image[0], TRUE);
 					break;
 				case 1:
-					DrawGraph((710 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[1], TRUE);
+					DrawGraph((710 + j) + (IMAGE_SIZE * j), (100 + i) + (IMAGE_SIZE * i), image[1], TRUE);
 					break;
 				case 2:
-					DrawGraph((710 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[2], TRUE);
+					DrawGraph((710 + j) + (IMAGE_SIZE * j), (100 + i) + (IMAGE_SIZE * i), image[2], TRUE);
 					break;
 				case 3:
-					DrawGraph((710 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[3], TRUE);
+					DrawGraph((710 + j) + (IMAGE_SIZE * j), (100 + i) + (IMAGE_SIZE * i), image[3], TRUE);
 					break;
 				case 4:
-					DrawGraph((710 + j) + (IMAGE_SIZE * j), (110 + i) + (IMAGE_SIZE * i), image[4], TRUE);
+					DrawGraph((710 + j) + (IMAGE_SIZE * j), (100 + i) + (IMAGE_SIZE * i), image[4], TRUE);
 					break;
 				default:
 					break;
@@ -378,10 +403,7 @@ void RESULT::Draw() const
 			}
 		}
 	}
-
-
 	SetFontSize(30);
-	DrawFormatString(100, 665, 0xff00ff, "Bƒ{ƒ^ƒ“‚ÅŽŸ‚Ì‰æ–Ê‚Ö");
 	DrawFormatString(0, 0, 0xffffff, "%d", point);
 }
 

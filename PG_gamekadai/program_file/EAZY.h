@@ -29,6 +29,13 @@ private:
 	bool pose;									//ポーズ中かどうか
 	EAZY_DIF* eazy;								//自分自身を持つ
 
+	int Eflame_x;
+	int Eflame_y;
+
+	int mozi_image;
+	int kakunin_image;
+	int timeer_image;
+
 public:
 	//コンストラクタ
 	EAZY_DIF();
