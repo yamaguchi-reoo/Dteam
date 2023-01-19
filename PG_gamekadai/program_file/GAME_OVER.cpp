@@ -35,7 +35,7 @@ void GAME_OVER::Draw() const
 	{
 		// メッセージ設定
 		SetFontSize(16);
-		DrawString(500, 650, " ---- Bボタンでメニュー画面へ ----", 0xffffff, 0x000000);
+		DrawString(500, 650, " ---- Bボタンでメニュー画面へ ---- ", 0xffffff, 0x000000);
 	}
 	
 

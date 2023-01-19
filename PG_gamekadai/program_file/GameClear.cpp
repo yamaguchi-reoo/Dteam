@@ -22,7 +22,7 @@ void GameClear::Draw() const
 	if (count & blink) {
 		// メッセージ設定
 		SetFontSize(16);
-		DrawString(500, 650 , " ---- Bボタンでメニュー画面へ ----", 0xffffff);
+		DrawString(500, 650 , " ---- Bボタンでメニュー画面へ ---- ", 0xffffff);
 	}
 	
 }
