@@ -225,6 +225,9 @@ AbstractScene* RESULT::Update()
 void RESULT::Draw() const
 {
 	DrawLine(640, 0, 640, 720, 0xffffff, TRUE);
+
+
+	//“ïˆÕ“x‚²‚Æ‚É•`‰æ‚·‚é‚à‚Ì‚ð•Ï‚¦‚é
 	if (easy != nullptr)
 	{
 		DrawGraph(200, 100, zibun_image, TRUE);

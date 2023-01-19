@@ -11,8 +11,6 @@
 
 NORMAL_DIF::NORMAL_DIF()
 {
-	cursol_x = CURSOL_X;
-	cursol_y = CURSOL_Y;
 	standby_count = 0;
 	cursol_count_x = 0;
 	cursol_count_y = 0;
@@ -67,11 +65,14 @@ NORMAL_DIF::NORMAL_DIF()
 AbstractScene* NORMAL_DIF::Update()
 {
 
+	//画面をポーズしているか判定
 	if (!pose)
 	{
+		//画像を覚える時間が終わっているかどうか判定
 		if (!stand)
 		{
 			Standby();
+			//時間をはかる
 			if (standby_count++ % 60 == 0)
 			{
 				standby_limit--;
@@ -80,6 +81,7 @@ AbstractScene* NORMAL_DIF::Update()
 		}
 		else
 		{
+			//STARTボタンを押したらポーズする
 			if (PAD_INPUT::OnButton(XINPUT_BUTTON_START))
 			{
 				pose = true;
@@ -89,16 +91,23 @@ AbstractScene* NORMAL_DIF::Update()
 				game_count++;
 			}
 
+			//ゲームの時間をはかり、0以下になったらクリア判定をし、リザルトへ
 			if (game_count % 60 == 0)
 			{
 				time_limit--;
 				if (time_limit <= 0)
 				{
-					return new GAME_OVER();
+					if (ClearJudge())
+					{
+						return new RESULT();
+					}
 				}
 			}
 
 
+			//カーソル移動
+
+			//十字キー　下
 			if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN) /*|| PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_DOWN)*/)
 			{
 				if (cursol_count_y < NORMAL_SIZE - 1)
@@ -111,6 +120,7 @@ AbstractScene* NORMAL_DIF::Update()
 				}
 				WaitTimer(120);
 			}
+			//十字キー　上
 			if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP) /*|| PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_UP)*/)
 			{
 				if (cursol_count_y > 0)
@@ -123,7 +133,7 @@ AbstractScene* NORMAL_DIF::Update()
 				}
 				WaitTimer(120);
 			}
-
+			//十字キー　右
 			if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_RIGHT) /*|| PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT)*/)
 			{
 				if (cursol_count_x < NORMAL_SIZE - 1)
@@ -136,7 +146,7 @@ AbstractScene* NORMAL_DIF::Update()
 				}
 				WaitTimer(120);
 			}
-
+			//十字キー　左
 			if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_LEFT) /*|| PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT)*/)
 			{
 				if (cursol_count_x > 0)
@@ -150,28 +160,29 @@ AbstractScene* NORMAL_DIF::Update()
 				WaitTimer(120);
 			}
 
-
+			//ボタンが押されたときに、色の変数を配列に入れる
 			if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
 			{
-				player_stage[cursol_count_y][cursol_count_x] = 2;
+				player_stage[cursol_count_y][cursol_count_x] = 2;    //緑
 			}
 			if (PAD_INPUT::OnButton(XINPUT_BUTTON_B))
 			{
-				player_stage[cursol_count_y][cursol_count_x] = 1;
+				player_stage[cursol_count_y][cursol_count_x] = 1;    //赤
 			}
 			if (PAD_INPUT::OnButton(XINPUT_BUTTON_Y))
 			{
-				player_stage[cursol_count_y][cursol_count_x] = 4;
+				player_stage[cursol_count_y][cursol_count_x] = 4;    //黄色
 			}
 			if (PAD_INPUT::OnButton(XINPUT_BUTTON_X))
 			{
-				player_stage[cursol_count_y][cursol_count_x] = 3;
+				player_stage[cursol_count_y][cursol_count_x] = 3;    //青
 			}
 		}
 	}
+	//ポーズ中
 	else
 	{
-
+		//Aボタンを押したらクリア判定をし、リザルト画面へ
 		if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
 		{
 			if (ClearJudge())
@@ -179,12 +190,12 @@ AbstractScene* NORMAL_DIF::Update()
 				return new RESULT(this);
 			}
 		}
+		//Bボタンを押したら、ゲーム画面へ
 		else if (PAD_INPUT::OnButton(XINPUT_BUTTON_B))
 		{
 			pose = false;
 		}
 		else;
-
 	}
 	return this;
 }
@@ -192,7 +203,7 @@ AbstractScene* NORMAL_DIF::Update()
 
 void NORMAL_DIF::Standby()
 {
-
+	//覚える時間をはかり、終わらせるフラグをtrueに
 	if (standby_limit < 0)
 	{
 		stand = true;
@@ -202,6 +213,8 @@ void NORMAL_DIF::Standby()
 
 bool NORMAL_DIF::ClearJudge()
 {
+
+	//プレイヤーとお手本を比べて、解答用配列に格納
 	int i;
 	for (i = 0; i < NORMAL_SIZE; i++)
 	{
@@ -225,9 +238,11 @@ bool NORMAL_DIF::ClearJudge()
 
 void NORMAL_DIF::Draw() const
 {
+	//ゲームを止めているかどうか判定
 	if (!pose)
 	{
 		DrawBox(0, 0, 1280, 720, 0xffffff, TRUE);
+		//覚える時間が終わっているかどうか
 		if (stand)
 		{
 			SetFontSize(10);
@@ -235,22 +250,24 @@ void NORMAL_DIF::Draw() const
 			{
 				for (int j = 0; j < NORMAL_SIZE; j++)
 				{
+					//プレイヤーの描画
+
 					switch (player_stage[i][j])
 					{
 					case 0:
-						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[0], TRUE);
+						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[0], TRUE); //白
 						break;
 					case 1:
-						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[1], TRUE);
+						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[1], TRUE); //赤
 						break;
 					case 2:
-						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[2], TRUE);
+						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[2], TRUE); //緑
 						break;
 					case 3:
-						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[3], TRUE);
+						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[3], TRUE); //青
 						break;
 					case 4:
-						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[4], TRUE);
+						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[4], TRUE); //黄色
 						break;
 					default:
 						break;
@@ -263,6 +280,7 @@ void NORMAL_DIF::Draw() const
 			DrawFormatString(740, 55, 0x000000, "%3d", time_limit);
 			DrawGraph(490, 50, timeer_image, TRUE);
 		}
+		//覚える時間
 		else
 		{
 
@@ -272,22 +290,23 @@ void NORMAL_DIF::Draw() const
 			{
 				for (int j = 0; j < NORMAL_SIZE; j++)
 				{
+					//お手本画像描画
 					switch (normal_stage[i][j])
 					{
 					case 0:
-						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[0], TRUE);
+						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[0], TRUE); //白
 						break;
 					case 1:
-						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[1], TRUE);
+						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[1], TRUE); //赤
 						break;
 					case 2:
-						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[2], TRUE);
+						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[2], TRUE); //緑
 						break;
 					case 3:
-						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[3], TRUE);
+						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[3], TRUE); //青
 						break;
 					case 4:
-						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[4], TRUE);
+						DrawGraph((Nflame_x + j) + (IMAGE_SIZE * j), (Nflame_y + i) + (IMAGE_SIZE * i), block_image[4], TRUE); //黄色
 						break;
 					default:
 						break;

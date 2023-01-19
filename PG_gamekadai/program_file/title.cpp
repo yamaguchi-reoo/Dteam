@@ -16,7 +16,7 @@ TITLE::TITLE()
 
 AbstractScene* TITLE::Update()
 {
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN)) 
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN))
 	{
 		if (cursor_no < 1)++cursor_no;
 		else --cursor_no;
