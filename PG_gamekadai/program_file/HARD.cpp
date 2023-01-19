@@ -260,7 +260,7 @@ void HARD_DIF::Draw() const
 						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[3], TRUE);//ê¬
 						break;
 					case 4:
-						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[4], TRUE)//â©êF
+						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[4], TRUE);//â©êF
 							break;
 					default:
 						break;
