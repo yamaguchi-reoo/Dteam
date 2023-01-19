@@ -8,7 +8,7 @@
 GameClear::GameClear()
 { 
 	// ゲームクリア画像読み込み
-	gameclearimg = LoadGraph("images/gameclear01.png",FALSE);
+	gameclear_img = LoadGraph("images/gameclear01.png",FALSE);
 	
 	count = 0;
 	blink = 60;
@@ -19,7 +19,7 @@ GameClear::GameClear()
 
 void GameClear::Draw() const
 {
-	DrawGraph(0, 0, gameclearimg, TRUE);
+	DrawGraph(0, 0, gameclear_img, TRUE);
 	
 	// 文字の点滅
 	if (count & blink) 
