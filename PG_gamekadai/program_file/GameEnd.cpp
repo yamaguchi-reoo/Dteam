@@ -26,7 +26,7 @@ void GameEnd::Draw() const
 
 	SetFontSize(30);
 	DrawString(450, 400 + endy, "        タイトル   ", 0x000000);
-	DrawString(450, 430 + endy, "　　  「いろつき」 ", 0x000000);
+	DrawString(450, 430 + endy, "　　  「いろあい」 ", 0x000000);
 	DrawString(450, 500 + endy, "         制作者    ", 0x000000);
 	DrawString(450, 560 + endy, "☆2-4　崎間　　竜也", 0x233B6C);
 	DrawString(450, 590 + endy, "　2-4　佐久本　盛杏", 0x00FA9A);

@@ -284,6 +284,8 @@ void RESULT::Draw() const
 				}
 			}
 		}
+		SetFontSize(60);
+		DrawFormatString(400, 120, 0xffffff, "%d", point);
 	}
 	else if (normal != nullptr)
 	{
@@ -343,6 +345,8 @@ void RESULT::Draw() const
 				}
 			}
 		}
+		SetFontSize(60);
+		DrawFormatString(400, 120, 0xffffff, "%d", point);
 	}
 	else
 	{
@@ -402,9 +406,10 @@ void RESULT::Draw() const
 				}
 			}
 		}
+		SetFontSize(60);
+		DrawFormatString(400, 30, 0xffffff, "%d", point);
 	}
-	SetFontSize(30);
-	DrawFormatString(0, 0, 0xffffff, "%d", point);
+
 }
 
 

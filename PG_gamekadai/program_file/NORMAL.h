@@ -13,7 +13,7 @@ class NORMAL_DIF :public AbstractScene
 private:
 	//ここにGame_Mainで使う変数を
 
-	int block_image[4];                             //ブロック画像用変数
+	int block_image[5];                             //ブロック画像用変数
 	int normal_stage[NORMAL_SIZE][NORMAL_SIZE];     //お手本用配列
 	int player_stage[NORMAL_SIZE][NORMAL_SIZE];     //プレイヤーが実際に入力する変数
 	bool answer_stage[NORMAL_SIZE][NORMAL_SIZE];    //解答用変数

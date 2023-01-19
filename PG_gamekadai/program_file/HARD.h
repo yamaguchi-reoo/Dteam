@@ -13,7 +13,7 @@ class HARD_DIF :public AbstractScene
 private:
 	//ここにGame_Mainで使う変数を
 
-	int block_image[4];							//ブロック画像用変数
+	int block_image[5];							//ブロック画像用変数
 	int hard_stage[HARD_SIZE][HARD_SIZE];		//お手本画像用変数
 	int player_stage[HARD_SIZE][HARD_SIZE];		//プレイヤー入力用変数
 	bool answer_stage[HARD_SIZE][HARD_SIZE];	//採点用配列
@@ -33,6 +33,7 @@ private:
 
 	int mozi_image;
 	int kakunin_image;
+	int timeer_image;
 
 public:
 	//コンストラクタ
