@@ -8,6 +8,7 @@
 #include"EAZY.h"
 #include"HARD.h"
 #include"NORMAL.h"
+#include"Help.h"
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)

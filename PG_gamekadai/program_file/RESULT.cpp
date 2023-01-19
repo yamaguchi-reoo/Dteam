@@ -314,7 +314,7 @@ void RESULT::Draw() const
 					DrawGraph((120 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[3], TRUE);
 					break;
 				case 4:
-					DrawGraph((150 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[4], TRUE);
+					DrawGraph((120 + j) + (IMAGE_SIZE * j), (200 + i) + (IMAGE_SIZE * i), image[4], TRUE);
 					break;
 				default:
 					break;
