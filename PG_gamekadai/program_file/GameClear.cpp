@@ -8,10 +8,13 @@
 GameClear::GameClear()
 { 
 	// ゲームクリア画像読み込み
-	gameclearimg = LoadGraph("images/gameclear.png",FALSE);
+	gameclearimg = LoadGraph("images/gameclear01.png",FALSE);
 	
 	count = 0;
 	blink = 60;
+
+	// フォント変更
+	font = CreateFontToHandle("Terminal", 18, 3);
 }
 
 void GameClear::Draw() const
@@ -19,10 +22,10 @@ void GameClear::Draw() const
 	DrawGraph(0, 0, gameclearimg, TRUE);
 	
 	// 文字の点滅
-	if (count & blink) {
+	if (count & blink) 
+	{
 		// メッセージ設定
-		SetFontSize(16);
-		DrawString(500, 650 , " ---- Bボタンでメニュー画面へ ---- ", 0xffffff);
+		DrawStringToHandle(480, 650, " ---- Ｂボタンでメニュー画面へ ---- ", 0xffffff, font);
 	}
 	
 }

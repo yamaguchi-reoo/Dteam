@@ -7,6 +7,8 @@ private:
 	int gameoverimg;	// 画像用変数
 	int count;	// カウント
 	int blink;	// 点滅用変数
+	int font;	// フォント用変数
+	
 	
 public:
 	GAME_OVER();

@@ -8,10 +8,13 @@
 GAME_OVER::GAME_OVER()
 {
 	// ゲームオーバー画像読み込み
-	gameoverimg = LoadGraph("images/gameover.png",FALSE);
+	gameoverimg = LoadGraph("images/gameover01.png",FALSE);
 
 	count = 0;
 	blink = 60;
+
+	// フォント変更
+	font = CreateFontToHandle("Terminal", 18, 3);
 }
 
 AbstractScene* GAME_OVER::Update() 
@@ -34,8 +37,7 @@ void GAME_OVER::Draw() const
 	if (count & blink) 
 	{
 		// メッセージ設定
-		SetFontSize(16);
-		DrawString(500, 650, " ---- Bボタンでメニュー画面へ ---- ", 0xffffff, 0x000000);
+		DrawStringToHandle(480, 650, " ---- Ｂボタンでメニュー画面へ ---- ", 0xffffff, font);
 	}
 	
 
