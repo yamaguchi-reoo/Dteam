@@ -4,7 +4,7 @@
 class GAME_OVER : public AbstractScene
 {
 private:
-	int gameoverimg;	// 画像用変数
+	int gameover_img;	// 画像用変数
 	int count;	// カウント
 	int blink;	// 点滅用変数
 	int font;	// フォント用変数

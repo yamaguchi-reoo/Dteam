@@ -3,12 +3,11 @@
 #include"AbstractScene.h"
 #include"title.h"
 #include"CONTROLER.h"
-#include<math.h>
 
 GAME_OVER::GAME_OVER()
 {
 	// ゲームオーバー画像読み込み
-	gameoverimg = LoadGraph("images/gameover01.png",FALSE);
+	gameover_img = LoadGraph("images/gameover01.png",FALSE);
 
 	count = 0;
 	blink = 60;
@@ -31,7 +30,7 @@ AbstractScene* GAME_OVER::Update()
 
 void GAME_OVER::Draw() const
 {
-	DrawGraph(0, 0, gameoverimg, TRUE);
+	DrawGraph(0, 0, gameover_img, TRUE);
 
 	// 文字の点滅
 	if (count & blink) 
