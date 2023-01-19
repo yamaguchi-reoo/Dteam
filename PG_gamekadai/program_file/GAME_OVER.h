@@ -4,7 +4,7 @@
 class GAME_OVER : public AbstractScene
 {
 private:
-	int gameoverimg;	// ‰æ‘œ—p•Ï”
+	int gameoverimg;	// ‰æ‘œ—p•Ï”;
 	
 public:
 	GAME_OVER();
