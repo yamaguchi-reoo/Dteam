@@ -14,7 +14,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 {
 	double dNextTime = GetNowCount();
 
-	SetMainWindowText("スライムアクション");
+	SetMainWindowText("いろあい");
 	SetWindowIconID(01);
 
 	ChangeWindowMode(TRUE);		// ウィンドウモードで起動
@@ -27,12 +27,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	SetJoypadDeadZone(DX_INPUT_PAD1, 0.0);
 
-	;	SetDrawScreen(DX_SCREEN_BACK);	// 描画先画面を裏にする
+	SetDrawScreen(DX_SCREEN_BACK);	// 描画先画面を裏にする
 
 	SceneManager* sceneMng;
 	try
 	{
-		sceneMng = new SceneManager((AbstractScene*)new GAME_OVER());
+		sceneMng = new SceneManager((AbstractScene*)new TITLE());
 
 	}
 	catch (const char* err)
