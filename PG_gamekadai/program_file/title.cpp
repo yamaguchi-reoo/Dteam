@@ -3,14 +3,13 @@
 #include <stdio.h>
 #include"CONTROLER.h"
 #include"SELECT.h"
+#include"GameEnd.h"
 
 TITLE::TITLE()
 {
 	titleimage = LoadGraph("images/title.png", FALSE);
 	titlearrow = LoadGraph("images/yazirusi.png", FALSE);
 	cursor_x = 400;
-	cursor_y = 400;
-
     cursor_no = 0;	
 }
 
@@ -36,9 +35,13 @@ AbstractScene* TITLE::Update()
 		{
 			return new SELECT();
 		}
-		else {
+		if(cursor_no == 1) {
 			return nullptr;
 		}
+	}
+
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A)) {
+		return nullptr;
 	}
 
 	return this;
