@@ -38,6 +38,7 @@ HARD_DIF::HARD_DIF()
 
 	if ((mozi_image = LoadGraph("images/mozi.png")) == -1);
 	if ((kakunin_image = LoadGraph("images/kakunin.png")) == -1);
+	if ((timeer_image = LoadGraph("images/timeimage.png")) == -1);
 
 
 	srand((unsigned)time(NULL));
@@ -164,10 +165,10 @@ AbstractScene* HARD_DIF::Update()
 			{
 				player_stage[cursol_count_y][cursol_count_x] = 1;	//赤
 			}
-			if (PAD_INPUT::OnButton(XINPUT_BUTTON_Y))
-			{
-				player_stage[cursol_count_y][cursol_count_x] = 4;	//黄色
-			}
+			//if (PAD_INPUT::OnButton(XINPUT_BUTTON_Y))
+			//{
+			//	player_stage[cursol_count_y][cursol_count_x] = 4;	//黄色
+			//}
 			if (PAD_INPUT::OnButton(XINPUT_BUTTON_X))
 			{
 				player_stage[cursol_count_y][cursol_count_x] = 3;   //青
@@ -259,18 +260,19 @@ void HARD_DIF::Draw() const
 					case 3:
 						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[3], TRUE);//青
 						break;
-					case 4:
-						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[4], TRUE)//黄色
-							break;
+					//case 4:
+					//	DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[4], TRUE)//黄色
+					//	break;
 					default:
 						break;
 					}
 				}
 			}
 			DrawGraph(Hflame_x, Hflame_y, frame_image, TRUE);
-			SetFontSize(20);
-			DrawFormatString(0, 0, 0xffff00, "%3d", time_limit);
 			DrawGraph(Hflame_x + (101 * cursol_count_x), Hflame_y + (101 * cursol_count_y), cursol_image, TRUE);
+			SetFontSize(50);
+			DrawFormatString(740, 55, 0x000000, "%3d", time_limit);
+			DrawGraph(490, 50, timeer_image, TRUE);
 		}
 		//記憶時間中
 		else
@@ -297,17 +299,17 @@ void HARD_DIF::Draw() const
 					case 3:
 						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[3], TRUE);//青
 						break;
-					case 4:
-						DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[4], TRUE);//黄色
-						break;
+					//case 4:
+					//	DrawGraph((Hflame_x + j) + (IMAGE_SIZE * j), (Hflame_y + i) + (IMAGE_SIZE * i), block_image[4], TRUE);//黄色
+					//	break;
 					default:
 						break;
 					}
 				}
 			}
 			DrawGraph(Hflame_x, Hflame_y, frame_image, TRUE);
-			SetFontSize(20);
-			DrawFormatString(0, 0, 0xffff00, "%3d", standby_limit);
+			SetFontSize(50);
+			DrawFormatString(610, 100, 0x000000, "%3d", standby_limit);
 		}
 	}
 	//ポーズ中

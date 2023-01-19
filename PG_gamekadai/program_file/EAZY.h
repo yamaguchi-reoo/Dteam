@@ -13,7 +13,7 @@ class EAZY_DIF :public AbstractScene
 private:
 	//ここにGame_Mainで使う変数を
 
-	int block_image[4];							//ブロック画像
+	int block_image[5];							//ブロック画像
 	int eazy_stage[EAZY_SIZE][EAZY_SIZE];		//お手本画像
 	int player_stage[EAZY_SIZE][EAZY_SIZE];		//プレイヤー用配列
 	bool answer_stage[EAZY_SIZE][EAZY_SIZE];	//解答

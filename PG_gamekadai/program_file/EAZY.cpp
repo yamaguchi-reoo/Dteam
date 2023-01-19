@@ -305,8 +305,8 @@ void EAZY_DIF::Draw() const
 				}
 			}
 			DrawGraph(500, 200, frame_image, TRUE);
-			SetFontSize(20);
-			DrawFormatString(0, 0, 0x000000, "%3d", standby_limit);
+			SetFontSize(50);
+			DrawFormatString(580, 140, 0x000000, "%3d", standby_limit);
 
 		}
 	}

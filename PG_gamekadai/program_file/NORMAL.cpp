@@ -314,8 +314,8 @@ void NORMAL_DIF::Draw() const
 				}
 			}
 			DrawGraph(Nflame_x, Nflame_y, frame_image, TRUE);
-			SetFontSize(20);
-			DrawFormatString(0, 0, 0xffff00, "%3d", standby_limit);
+			SetFontSize(50);
+			DrawFormatString(590, 140, 0x000000, "%3d", standby_limit);
 		}
 	}
 	else
